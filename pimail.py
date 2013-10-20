@@ -1,9 +1,16 @@
 import smtplib
 from email.mime.text import MIMEText
+import subprocess
 
 import conf
 
-msg = MIMEText("It works!")
+co = subprocess.Popen(['ifconfig'], stdout = subprocess.PIPE)
+ifconfig = co.stdout.read()
+
+text  = "\n$ ifconfig\n"
+text += ifconfig
+
+msg = MIMEText(text)
 msg['Subject'] = 'RPi: Startup Message'
 msg['From'] = conf.GMAIL_MAIL
 msg['To'] = conf.GMAIL_MAIL
