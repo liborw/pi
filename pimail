@@ -1,0 +1,4 @@
+#!/bin/sh
+if [ "$IFACE" = "wlan0" ]; then
+    sudo python /home/pi/Source/pi/pimail.py
+fi
